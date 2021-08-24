@@ -5,7 +5,7 @@
   - [Project Description](#project-description)
   - [Project Technologies](#project-technologies)
   - [License Type](#license-type)
-  - [Live APP Link](https://streamingTurtles.co/)
+  - [Live APP Link](http://streamingTurtles.co/)
   - [Github Link to our application](https://github.com/streamingTurtles/capstone-crypto)
 
 
@@ -29,13 +29,16 @@
   &nbsp;
   - - -
   ## Project Description:
-  - This is an fullstack application.  This application will use live public crypto currency current price and determine when the price has dropped or increased by a user selected percentage price.  Once the current price has met the percentage change, a notification will be sent.
+  - This is an fullstack application.  This application will use live public crypto currency current price and determine when the price has dropped or increased by a user selected percentage.  Once the current price has met the percentage change, a notification will be sent.
  
 
   &nbsp;
   - - -
-  ## Project Technologies:
-  - MERN Stack Application (Mongo, Express, React, Node) w/ Bootstrap
+  ## Project Technologies: [using a PERN Stack]
+  - Node
+  - Express
+  - React
+  - PostgreSQL
   
   
  
@@ -52,7 +55,7 @@
   &nbsp;
   - - -
   ## Application URL:
-  - https://streamingturtles.co/
+  - http://streamingturtles.co/
 
   <!-- &nbsp;
   - - -
