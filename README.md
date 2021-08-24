@@ -6,7 +6,7 @@
   - [Project Technologies](#project-technologies)
   - [License Type](#license-type)
   - [Live APP Link](http://streamingTurtles.co/)
-  - [Github Link to our application](https://github.com/streamingTurtles/capstone-crypto)
+  - [Github Link to the application](https://github.com/streamingTurtles/capstone-crypto)
 
 
 
