@@ -1,8 +1,14 @@
 {
   "name": "capstone-crypto",
   "version": "1.0.0",
-  "description": "capstone crypto fullstack application utilizing crypto API data for identifying price changes",
+  "description": "",
   "main": "server.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -11,13 +17,10 @@
     "type": "git",
     "url": "git+https://github.com/streamingTurtles/capstone-crypto.git"
   },
-  "author": "Peter Cardillo",
+  "author": "Peter Cardillo, streamingTurtles",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/streamingTurtles/capstone-crypto/issues"
   },
-  "homepage": "https://github.com/streamingTurtles/capstone-crypto#readme",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "homepage": "https://github.com/streamingTurtles/capstone-crypto#readme"
 }
