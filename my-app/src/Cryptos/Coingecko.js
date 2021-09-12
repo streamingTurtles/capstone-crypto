@@ -20,12 +20,12 @@ function Coingecko(){
 
     return <div>
         <br></br>
-        <h2 className="text-center">Coingecko API - JSON returned data diplayed below</h2>
-        <h3 className="text-center">This data is used to seed the db as needed per created models</h3>
-        <h3 className="text-center">example JSON "raw" DATA
+        <h2 className="text-center">Coingecko API - JSON returned data diplayed below</h2>        
+        <h3 className="text-center">
              <a href="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false"> Click here </a>
+              - to see the "raw" JSON data of the top 10 Crypto's
         </h3>                                 
-
+        <h3 className="text-center">Use this data to track and store your cryptos in a postgres DB</h3>
             
             <div className="Coingecko">
                 <Container>
