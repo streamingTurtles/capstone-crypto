@@ -17,7 +17,7 @@ const InputCrypto = () => {
             body: JSON.stringify(body)
           });
           console.log(response); // see the users input in express server console
-            
+          window.location = "/"; // clears out user input after Add Crypto buttn pressed            
         } catch (err) {
             console.error(err.message);
             
@@ -26,7 +26,7 @@ const InputCrypto = () => {
 
 
     return <Fragment>
-        <h1 className="text-center"> Track your Crypto's:</h1>
+        <h1 className="text-center"> Enter a Crypto to Watch:</h1>
         <form className="d-flex" onSubmit={onSubmitForm}>
             <input type="text" 
             className="form-control"
