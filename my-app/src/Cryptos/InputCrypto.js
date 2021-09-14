@@ -17,7 +17,7 @@ const InputCrypto = () => {
             body: JSON.stringify(body)
           });
           console.log(response); // see the users input in express server console
-          window.location = "/"; // clears out user input after Add Crypto buttn pressed            
+          window.location = "/"; // clears out user input after Add Crypto buttn pressed - refreshes browser window once the "response" variable  has been sent to refresh and show any changes.          
         } catch (err) {
             console.error(err.message);
             
