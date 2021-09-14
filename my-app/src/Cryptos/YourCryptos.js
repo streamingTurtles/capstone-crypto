@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 // import { delete_Crypto } from "../../../routes/api/api_crypto";
+import EditCrypto from "./EditCrypto";
 
 const YourCryptos = () => {
 
@@ -52,8 +53,8 @@ const YourCryptos = () => {
             <thead>
             <tr>
                 <th>Crypto Watch</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Update Crypto</th>
+                <th>Delete Crypto</th>
             </tr>
             </thead>
             
@@ -62,7 +63,9 @@ const YourCryptos = () => {
                 return (
                 <tr key={crypto_name.crypto_name_id}>
                     <td>{crypto_name.name}</td>
-                    <td>Edit</td>
+                    <td>
+                        <EditCrypto crypto_name={crypto_name}/>
+                    </td>
                     <td>
                         <button className="btn btn-danger" 
                         onClick={() => deleteCrypto(crypto_name.crypto_name_id)}>Delete</button>
