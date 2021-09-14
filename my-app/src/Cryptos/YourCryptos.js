@@ -1,10 +1,28 @@
 import React, { Fragment, useEffect, useState } from "react";
+// import { delete_Crypto } from "../../../routes/api/api_crypto";
 
 const YourCryptos = () => {
 
     // from the array data returned from the "/getallcryptos" APR route -
     // put it inside our useState 
+    // const [loading, setLoading] = useState(true)
     const [cryptos, setCryptos] = useState([]);
+
+    // delete function to remove upon onClick() delete button
+    const deleteCrypto = async id => {
+        try {
+          const deleteCrypto = await fetch (`http://localhost:5000/deletecrypto/${id}`, {
+              method: "DELETE"
+          });  
+          console.log(deleteCrypto); 
+          // use a filter function to return every other crypto I am not trying to delete  
+          //setCryptos(cryptos.rows.filter(crypto_name => crypto_name.crypto_name_id !== id ));
+          getWatchedCryptos()
+          //window.location = "/";  //refresh the browser window 
+        } catch (err) {
+          console.error(err.message)            
+        }        
+    }
 
     const getWatchedCryptos = async () => {
         try {
@@ -13,13 +31,15 @@ const YourCryptos = () => {
 
           // console.log (jsonData);
           setCryptos(jsonData);
+        // debugger;
         } catch (err) {
           console.error(err.message);            
-        }
+        } 
     }
     // useEffect - make a fetch req each time our component is rendered
     useEffect( () =>{ getWatchedCryptos(); }, []);
     console.log(cryptos);
+    // debugger;
 
 
 
@@ -37,13 +57,16 @@ const YourCryptos = () => {
             </tr>
             </thead>
             
-            <tbody>                
-            {cryptos.map(crypto_name => {
+            <tbody>              
+            {cryptos?.rows?.map(crypto_name => {
                 return (
-                <tr>
+                <tr key={crypto_name.crypto_name_id}>
                     <td>{crypto_name.name}</td>
                     <td>Edit</td>
-                    <td>Delete</td>
+                    <td>
+                        <button className="btn btn-danger" 
+                        onClick={() => deleteCrypto(crypto_name.crypto_name_id)}>Delete</button>
+                    </td>
                 </tr>
                 )
               })
