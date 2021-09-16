@@ -2,6 +2,12 @@ import React, { Fragment, useEffect, useState } from "react";
 // import { delete_Crypto } from "../../../routes/api/api_crypto";
 import EditCrypto from "./EditCrypto";
 
+
+require('dotenv').config();
+const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
+
+
+
 const YourCryptos = () => {
 
     // from the array data returned from the "/getallcryptos" APR route -
@@ -63,8 +69,48 @@ const YourCryptos = () => {
                 return (
                 <tr key={crypto_name.crypto_name_id}>
                     <td>{crypto_name.name}</td>
+
+                    {/* <td>{`SELECT name, PGP_SYM_DECRYPT(name::bytea, $1) as name FROM crypto_name WHERE crypto_name_id=$2`, [ENCRYPTION_KEY, crypto_name.crypto_name_id]}</td> */}
+          
+
+                    {/* other commands I have tried that don't work */}
+
+                    {/* <td>{`SELECT name, PGP_SYM_DECRYPT(name::bytea, $1) as name FROM crypto_name WHERE crypto_name_id=$2`, [ENCRYPTION_KEY,crypto_name.crypto_name_id]}</td> */}
+
+                    {/* SELECT name, PGP_SYM_DECRYPT(name::bytea, '1234') as name FROM crypto_name WHERE crypto_name_id='27'; */}
+
+                    {/* <td>{`SELECT * PGP_SYM_DECRYPT(name::bytea, $1) as name FROM crypto_name WHERE crypto_name_id = $2 `[ENCRYPTION_KEY, crypto_name.name]}</td> */}
+
+                    {/* {`SELECT crypto_name (name) PGP_SYM_DECRYPT(name::bytea, $1) ) RETURNING *`,
+                    [ENCRYPTION_KEY, crypto_name.name]} */}
+
+                    {/* <td>
+                    {`SELECT crypto_name (name) PGP_SYM_DECRYPT(name::bytea, $1) ) RETURNING *`,
+                    [ENCRYPTION_KEY, crypto_name.name]}
+                    </td> */}
+
+                    {/* <td>
+                        {`SELECT name, PGP_SYM_DECRYPT(name::bytea, $1) AS name FROM crypto_name WHERE crypto_name_id = $2`,
+                        [ENCRYPTION_KEY, crypto_name.crypto_name_id]}
+                    </td> */}
+
+                    {/* <td>
+                        {`SELECT name, PGP_SYM_DECRYPT(name::bytea, $1) AS name FROM crypto_name`,
+                        [ENCRYPTION_KEY, crypto_name.name]}
+                    </td> */}
+
+                    {/* <td>
+                        {`SELECT * PGP_SYM_DECRYPT(name::bytea, $1) AS name FROM crypto_name`,
+                        [ENCRYPTION_KEY]}
+                    </td> */}
+                    
+
+
+
+
+
                     <td>
-                        <EditCrypto crypto_name={crypto_name}/>
+                    <EditCrypto crypto_name={crypto_name}/>
                     </td>
                     <td>
                         <button className="btn btn-danger" 

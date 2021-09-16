@@ -6,10 +6,6 @@ const pool = require("./db");  // allows us to write queries in postgres
 const api_crypto = require('./routes/api/api_crypto');
 
 
-require('dotenv').config();
-const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
-
-
 // middleware used for cross domain and express that's interacting with the frontend
 app.use(cors());  // allow our server be accessible to any domain requesting data from the browser
 app.use(express.json()); // gives us access to the request.body object to get JSON data
@@ -58,19 +54,14 @@ app.get("/getonecrypto/:id", async(req, res) => {
 
 // post/create a new crypto
 // endpoint path is SINGULAR - crypto
-// added encryption to the input data with pgp_sym_encrypt function
 app.post("/createcrypto", async (req, res) => {
     try {  // get data from the client side        
         console.log(req.body); // uncomment to test seeing the JSON data in the console when sent via Insomnia w/ JSON data
         const { name } = req.body;
         const newCrypto_name = await pool.query(
-        "INSERT INTO crypto_name (name) VALUES(PGP_SYM_ENCRYPT($1, $2) ) RETURNING *", 
-        [name, ENCRYPTION_KEY]
+        "INSERT INTO crypto_name (name) VALUES($1) RETURNING *", 
+        [name]
         );
-        // uncomment for no encryption
-        // "INSERT INTO crypto_name (name) VALUES($1) RETURNING *", 
-        // [name]
-        // );
         res.json(newCrypto_name.rows[0]);
     } catch (err) {
       console.error(err.message);  
