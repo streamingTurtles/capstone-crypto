@@ -33,7 +33,9 @@ app.delete('/cryptos/:id', api_crypto.delete_Crypto);
 // endpoint path is PLURAL - cryptos
 app.get("/getallcryptos", async(req, res) => {
     try {
-      const getAll_cryptoNames = await pool.query("SELECT * FROM crypto_name");
+      //const getAll_cryptoNames = await pool.query("SELECT * FROM crypto_name");
+         const getAll_cryptoNames = await pool.query("SELECT name, PGP_SYM_DECRYPT(name::bytea, '1234') as name FROM crypto_name");
+      // "SELECT name, PGP_SYM_DECRYPT(name::bytea, 1234) as name FROM crypto_name WHERE crypto_name_id=39;"
       res.json(getAll_cryptoNames);
     } catch (error) {
       console.log.error(err.message)  
@@ -89,6 +91,7 @@ app.put("/updatecrypto/:id", async (req, res) => {
           [name, id]
           );  
           res.json("a crypto name has been updated");
+          //res.json(updateCrypto);
     } catch (err) {
       console.error(err.message);        
     }
@@ -102,7 +105,10 @@ app.delete("/deletecrypto/:id", async (req, res) => {
         const { id } = req.params;
         const deleteCrypto = await pool.query("DELETE FROM crypto_name WHERE crypto_name_id = $1",
         [id]);
-        res.json("You deleted a crypto");
+        //
+        //    const deleteCrypto = await pool.query("DELETE FROM crypto_name rows[$1]",[id]);
+        // res.json("You deleted a crypto", deleteCrypto);
+        //res.json(deleteCrypto);
     } catch (err) {
         console.log(err.message);        
     }
