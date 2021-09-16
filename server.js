@@ -103,8 +103,10 @@ app.put("/updatecrypto/:id", async (req, res) => {
 app.delete("/deletecrypto/:id", async (req, res) => {
     try {
         const { id } = req.params;
+        console.log('id pleassseeeeeee', id);
         const deleteCrypto = await pool.query("DELETE FROM crypto_name WHERE crypto_name_id = $1",
         [id]);
+        console.log('where is the id???', id);
         //
         //    const deleteCrypto = await pool.query("DELETE FROM crypto_name rows[$1]",[id]);
         // res.json("You deleted a crypto", deleteCrypto);
@@ -113,10 +115,6 @@ app.delete("/deletecrypto/:id", async (req, res) => {
         console.log(err.message);        
     }
 })
-
-
-
-
 
 
 app.listen(port, () => {

@@ -10,18 +10,18 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 
 -- crypto name
--- CREATE TABLE crypto_name (
---   crypto_name_id SERIAL PRIMARY KEY,
---   name text NOT NULL
--- );
+CREATE TABLE crypto_name (
+  crypto_name_id SERIAL PRIMARY KEY,
+  name text NOT NULL
+);
 
 
 
 -- crypto name
-CREATE TABLE crypto_name (
-  crypto_name_id SERIAL PRIMARY KEY,
-  name VARCHAR(1000) NOT NULL
-);
+-- CREATE TABLE crypto_name (
+--   crypto_name_id SERIAL PRIMARY KEY,
+--   name VARCHAR(1000) NOT NULL
+-- );
 
 
 
