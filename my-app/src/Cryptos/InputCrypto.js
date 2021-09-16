@@ -1,6 +1,10 @@
 import React, { Fragment, useState } from "react";
 
 
+require('dotenv').config();
+const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
+
+
 const InputCrypto = () => {
 
     // setup state to add, track user input
@@ -10,7 +14,7 @@ const InputCrypto = () => {
     const onSubmitForm = async e => {
         e.preventDefault();  // prevent page refresh
         try {
-          const body = { name }  ;  // name destructure of our crypto_name table in crypto_db
+          const body = { name }  ;  // name destructure of our crypto_name table in crypto_db          
           const response = await fetch("http://localhost:5000/createcrypto", {
             method: "POST",
             headers: { "Content-Type": "application/json"},
@@ -39,4 +43,7 @@ const InputCrypto = () => {
 };
 
 export default InputCrypto;
+
+
+// SELECT name, PGP_SYM_DECRYPT(name::bytea, '1234') as name FROM crypto_name WHERE crypto_name_id='27';
 
