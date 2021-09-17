@@ -17,15 +17,19 @@ const YourCryptos = () => {
 
     // delete function to remove upon onClick() delete button
     const deleteCrypto = async id => {
+        //debugger;
         try {
           const deleteCrypto = await fetch (`http://localhost:5000/deletecrypto/${id}`, {
               method: "DELETE"
-          });  
+          }).then(() => {
+            getWatchedCryptos()
+
+          })  
           console.log(deleteCrypto); 
           // use a filter function to return every other crypto I am not trying to delete  
           //setCryptos(cryptos.rows.filter(crypto_name => crypto_name.crypto_name_id !== id ));
-          getWatchedCryptos()
-          //window.location = "/";  //refresh the browser window 
+        //   getWatchedCryptos()
+          window.location = "/";  //refresh the browser window 
         } catch (err) {
           console.error(err.message)            
         }        
@@ -36,6 +40,7 @@ const YourCryptos = () => {
           const response = await fetch("http://localhost:5000/getallcryptos")
           const jsonData = await response.json();
 
+          //debugger;
           // console.log (jsonData);
           setCryptos(jsonData);
         // debugger;
@@ -114,7 +119,7 @@ const YourCryptos = () => {
                     </td>
                     <td>
                         <button className="btn btn-danger" 
-                        onClick={() => deleteCrypto(crypto_name.crypto_name_id)}>Delete</button>
+                        onClick={(e) => deleteCrypto(crypto_name.crypto_name_id)}>Delete</button>
                     </td>
                 </tr>
                 )
