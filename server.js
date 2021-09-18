@@ -25,6 +25,19 @@ app.put('/cryptos/:id', api_crypto.update_Crypto);
 app.delete('/cryptos/:id', api_crypto.delete_Crypto);
 
 
+
+// from : https://create-react-app.dev/docs/deployment/
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+
+
+
+
+
 //
 // Create ROUTES for backend - leveriging express middleware - using pool object "pg" middleware
 // to build routes with postgres queries
