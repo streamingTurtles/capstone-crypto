@@ -4,53 +4,47 @@ const port = 5000;
 const cors = require("cors");
 const pool = require("./db");  // allows us to write queries in postgres
 const api_crypto = require('./routes/api/api_crypto');
-const axios = require("axios");
 
 
 require('dotenv').config();
 const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
 
+// Redis
+const Redis = require('redis');
+const RedisClient = Redis.createClient()
+const DEFAULT_EXPIRATION = 1800 // 30 MIN 
+
+
+
+
+// require('dotenv').config();
+// const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
+
+
 // middleware used for cross domain and express that's interacting with the frontend
 app.use(cors());  // allow our server be accessible to any domain requesting data from the browser
 app.use(express.json()); // gives us access to the request.body object to get JSON data
 
+
+
 // ROUTES
 // TESTing Express Server Routes in React only:
-// app.get('/cryptos/', api_crypto.getAll_Crypto);
-// app.get('/cryptos/:id', api_crypto.getOne_Crypto);
-// app.post('/cryptos/', api_crypto.addOne_Crypto);
-// app.put('/cryptos/:id', api_crypto.update_Crypto);
-// app.delete('/cryptos/:id', api_crypto.delete_Crypto);
+app.get('/cryptos/', api_crypto.getAll_Crypto);
+app.get('/cryptos/:id', api_crypto.getOne_Crypto);
+app.post('/cryptos/', api_crypto.addOne_Crypto);
+app.put('/cryptos/:id', api_crypto.update_Crypto);
+app.delete('/cryptos/:id', api_crypto.delete_Crypto);
 
 
 
-// REDIS
-const Redis = require('redis');
-// { url: } to pass in production instance of redis when ready, for now using localhost & port 6379
-// on localmachine - run In Insomnia, using GET with url: http://localhost:5000/coins
-// the 1st time it takes ~180ms, then after much faster, i.e ~49.2m 
-const RedisClient = Redis.createClient()  
-const DEFAULT_EXPIRATION = 120 // 1 sec expiration timelimit held in cache
-
-// REDIS - endpoint using REDIS caching implementatin for the top 10 cryptos
-app.get("/coins", async (req, res) => {
-  const id = req.query.id
-  const { data } = await axios.get(
-    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false",
-    { params: { id } }
-    )
-    RedisClient.setex('coinsInCache', DEFAULT_EXPIRATION, JSON.stringify(data))
-  res.json(data)
-});
-
-
-
-// Redis endpoint for and individual crypto - FUTURE DEV.
-// app.get("/coins/:symbol", async (req, res) => {
-//   const { data } = await axios.get(
-//  `https://api.coingecko.com/api/v3/coins---see-documentation-for-protocol-string.com/${req.params.symbol}`
-//   )
-//   res.json(data)
+// from : https://create-react-app.dev/docs/deployment/
+// add "*" so the route will accept anything
+// 
+// use * 
+// const path = require('path');
+// app.use(express.static(path.join(__dirname, 'build')));
+// app.get('/*', function (req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 // });
 
 

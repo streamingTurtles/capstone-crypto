@@ -3,12 +3,6 @@ import React, {useState, useEffect } from "react";
 import { Container, Row, Col, Table } from 'reactstrap';
 import axios from 'axios';
 
-// REDIS
-// const redis = require('.././config/redis');
-// const redisPort = 6379
-// const client = redis.createClient(redisPort);
-
-
 
 // Coingecko Swagger API documentation: https://www.coingecko.com/es/api/documentation 
 // using reactstrap to add a table for the JSON data to populate
@@ -26,20 +20,13 @@ function Coingecko(){
 
     return <div>
         <br></br>
-    
+        <h2 className="text-center">Coingecko API - JSON returned data diplayed below</h2>        
         <h3 className="text-center">
              <a href="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false"> Click here </a>
-              - to see the "raw" JSON data direct from the API
-        </h3>  
-       {/* REDIS - running the API query from a REDIS server - the code in server.js file  */}
-        <h3 className="text-center">
-             <a href="http://localhost:5000/coins"> Click here </a>
-              - to see the "raw" JSON data direct the REDIS server
-        </h3> 
-        <br></br>
-        <br></br>                                 
-        {/* <h3 className="text-center">Use this data to watch and store your cryptos in a postgres DB</h3> */}
-        <h2 className="text-center">Coingecko API - JSON returned data diplayed below</h2>                    
+              - to see the "raw" JSON data of the top 10 Crypto's
+        </h3>                                 
+        <h3 className="text-center">Use this data to watch and store your cryptos in a postgres DB</h3>
+            
             <div className="Coingecko">
                 <Container>
                     <Row>

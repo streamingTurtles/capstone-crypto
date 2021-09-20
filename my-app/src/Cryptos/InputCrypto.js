@@ -30,6 +30,7 @@ const InputCrypto = () => {
 
 
     return <Fragment>
+        <br/>
         <h1 className="text-center"> Enter a Crypto to Watch:</h1>
         <form className="d-flex" onSubmit={onSubmitForm}>
             <input type="text" 
