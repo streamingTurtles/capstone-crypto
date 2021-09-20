@@ -25,6 +25,7 @@ app.use(express.json()); // gives us access to the request.body object to get JS
 
 
 // REDIS
+const { promisify } = require('util');
 const Redis = require('redis');
 // { url: } to pass in production instance of redis when ready, for now using localhost & port 6379
 // on localmachine - run In Insomnia, using GET with url: http://localhost:5000/coins
@@ -158,3 +159,10 @@ app.delete("/deletecrypto/:id", async (req, res) => {
 app.listen(port, () => {
     console.log("confirming server is running on port 5000");
 })
+
+
+
+module.exports = {
+  get: promisify(RedisClient.get).bind(RedisClient),
+  set: promisify(RedisClient.set).bind(RedisClient)
+};
