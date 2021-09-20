@@ -29,7 +29,7 @@ const Redis = require('redis');
 // { url: } to pass in production instance of redis when ready, for now using localhost & port 6379
 // on localmachine - run In Insomnia, using GET with url: http://localhost:5000/coins
 // the 1st time it takes ~180ms, then after much faster, i.e ~49.2m 
-const RedisClient = Redis.createClient()  
+const RedisClient = Redis.createClient({port: process.env.REDPORT})  
 const DEFAULT_EXPIRATION = 120 // 1 sec expiration timelimit held in cache
 
 // REDIS - endpoint using REDIS caching implementatin for the top 10 cryptos
