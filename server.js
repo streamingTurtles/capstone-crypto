@@ -162,7 +162,7 @@ app.listen(port, () => {
 
 
 
-module.exports = {
-  get: promisify(RedisClient.get).bind(RedisClient),
-  set: promisify(RedisClient.set).bind(RedisClient)
-};
+// module.exports = {
+//   get: promisify(RedisClient.get).bind(RedisClient),
+//   set: promisify(RedisClient.set).bind(RedisClient)
+// };
