@@ -1,6 +1,6 @@
 const Pool = require("pg").Pool;   // using Pool, allows us to run queries with postgres
 
-// This config works with local Mac
+// *** This config works with local Mac ***
 // const pool = new Pool({
 //     user: "postgres",
 //     psssword: "root",
@@ -29,9 +29,18 @@ const Pool = require("pg").Pool;   // using Pool, allows us to run queries with 
 //     database: "crypto_db"
 // });
 
+// *** This config works with local Mac ***
+// const pool = new Pool({
+//     user: "postgres",
+//     psssword: "peter",
+//     host: "localhost",
+//     port: 5432,
+//     database: "crypto_db"
+// });
+
 const pool = new Pool({
     user: "postgres",
-    psssword: "peter",
+    psssword: "password",
     host: "localhost",
     port: 5432,
     database: "crypto_db"
