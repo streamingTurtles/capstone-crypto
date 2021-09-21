@@ -157,7 +157,7 @@ app.delete("/deletecrypto/:id", async (req, res) => {
 
 
 app.listen(port, () => {
-    console.log("confirming server is running on port 5000");
+    console.log(`confirming server is running on port ${port}`);
 })
 
 
