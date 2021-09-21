@@ -13,7 +13,7 @@ const pool = new Pool({
     PGPASSWORD: "password",
     PGHOST: "localhost",
     PGPORT: 5432,
-    PORT:3011,
+    PORT:5000,
     PGDATABASE: "crypto_db"
 });
 
