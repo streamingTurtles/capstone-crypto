@@ -8,6 +8,7 @@ const Pool = require("pg").Pool;   // using Pool, allows us to run queries with 
 //     database: "crypto_db"
 // });
 
+
 const pool = new Pool({
     PGUSER: "crypto_user",
     PGPASSWORD: "password",
