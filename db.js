@@ -12,7 +12,8 @@ const pool = new Pool({
     PGUSER: "crypto_user",
     PGPASSWORD: "password",
     PGHOST: "localhost",
-    PGPORT: 3011,
+    PGPORT: 5432,
+    PORT:3011,
     PGDATABASE: "crypto_db"
 });
 
