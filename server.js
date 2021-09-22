@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express();
-const port = 5000;
+const PORT = process.env.PORT || 5000;
 const cors = require("cors");
 const pool = require("./db");  // allows us to write queries in postgres
 const api_crypto = require('./routes/api/api_crypto');
@@ -30,7 +30,7 @@ const Redis = require('redis');
 // { url: } to pass in production instance of redis when ready, for now using localhost & port 6379
 // on localmachine - run In Insomnia, using GET with url: http://localhost:5000/coins
 // the 1st time it takes ~180ms, then after much faster, i.e ~49.2m 
-const RedisClient = Redis.createClient({port: process.env.REDPORT})  
+const RedisClient = Redis.createClient({PORT: process.env.REDPORT})  
 const DEFAULT_EXPIRATION = 120 // 1 sec expiration timelimit held in cache
 
 // REDIS - endpoint using REDIS caching implementatin for the top 10 cryptos
@@ -156,8 +156,8 @@ app.delete("/deletecrypto/:id", async (req, res) => {
 })
 
 
-app.listen(port, () => {
-    console.log(`confirming server is running on port ${port}`);
+app.listen(PORT, () => {
+    console.log(`confirming server is running on port ${PORT}`);
 })
 
 
