@@ -5,40 +5,59 @@
   - [Project Description](#project-description)
   - [Project Technologies](#project-technologies)
   - [License Type](#license-type)
-  - [Live APP Link](http://streamingTurtles.co/)
+  - [Live APP Link](https://www.capstone-crypto.streamingturtles.co/)
   - [Github Link to the application](https://github.com/streamingTurtles/capstone-crypto)
 
 
 
-
-
-
-
-
-
-  - - -
- 
-  ## Screenshots of app:
-  ![Screenshot](/assets/pic-1.png)
-    &nbsp;
-  - - -
- 
- 
- 
- 
   &nbsp;
   - - -
   ## Project Description:
-  - This is an fullstack application.  This application will use live public crypto currency current price and determine when the price has dropped or increased by a user selected percentage.  Once the current price has met the percentage change, a notification will be sent.
+  - This is an fullstack application that has been [deployed on digital ocean](https://www.capstone-crypto.streamingturtles.co/) that works completly when run on your [localhost machine](http://localhost:3011/). 
+
+  - To execute a local copy of this app, please run npm -i on both the server-side (backend) & client-side (fronEnd) of the file structure.
+  
+  - This application uses the [Coingecko API](https://www.coingecko.com/es/api/documentation) to query a top ten list of crypto currencies from which you can use to monitor and take notes that are encrypted into a postgres DB.  The app also compares the data requests from the live API vs cached data stored in a Redis server. 
+
+  - Below are screenshots of the working workflow of the app.
  
+
+
+  - - - 
+  ## Screenshot of app showing top 10 ranked crypto curriencies and user adding a crypto to watch:
+  ![Screenshot](/assests/capstone-crypto-pic-1.png)
+    &nbsp;
+  ## Screenshot of app showing the XRP crypto added to the watch list:
+  ![Screenshot](/assests/capstone-crypto-pic-2.png)
+    &nbsp;    
+  ## Screenshot of app showing the XRP crypto added & saved in encrypted form in the postgres DB, along with the current list of cryptos (all encrypted).
+  
+  *** POINT ***  Although data is encrypted in the DB, it is shown in text format in the View/Browser.
+  ![Screenshot](/assests/capstone-crypto-pic-2.5.png)
+    &nbsp;     
+  ## Screenshot of app showing the XRP crypto being edited:
+   ![Screenshot](/assests/capstone-crypto-pic-3.png)
+    &nbsp;
+  ## Screenshot of app showing the XRP crypto edited and updated in the watch list:   
+  ![Screenshot](/assests/capstone-crypto-pic-4.png)
+    &nbsp;
+  ## Screenshot of the raw JSON data from the API - sometimes a wait to see
+  ![Screenshot](/assests/capstone-crypto-pic-5.png)
+    &nbsp;   
+  ## Screenshot of the raw JSON data from the saved Cache on a REDIS server - now, much faster data retrevial:
+  ![Screenshot](/assests/capstone-crypto-pic-6.png)
+    &nbsp;            
+  - - -
+  
 
   &nbsp;
   - - -
-  ## Project Technologies: [using a PERN Stack]
-  - Node
-  - Express
-  - React
-  - PostgreSQL
+  ## Project Technologies:
+  - PERN stack (postgres, express, react & node)
+  - Redis
+  - Encryption, (using pgcrypto)
+  - Server-Side loadbalancing
+  - [SSL certificate implemented](https://www.capstone-crypto.streamingturtles.co/) 
   
   
  
@@ -55,7 +74,8 @@
   &nbsp;
   - - -
   ## Application URL:
-  - http://streamingturtles.co/
+  - https://www.capstone-crypto.streamingturtles.co/
+  - [GitHub Profile](https://github.com/streamingTurtles)
 
   <!-- &nbsp;
   - - -
