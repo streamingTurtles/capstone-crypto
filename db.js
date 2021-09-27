@@ -40,7 +40,7 @@ const Pool = require("pg").Pool;   // using Pool, allows us to run queries with 
 
 const pool = new Pool({
     user: "postgres",
-    psssword: "root",
+    psssword: "postgres",
     host: "localhost",
     port: 5432,
     database: "crypto_db"

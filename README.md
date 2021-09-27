@@ -54,7 +54,7 @@
   
 
 
-  ## Screenshot of the raw JSON data from the API - sometimes a wait to see
+  ## Screenshot of the raw JSON data from the API - can take a while for repetitive requests.
   ![Screenshot](/assests/capstone-crypto-pic-5.png)
     &nbsp;   
 
