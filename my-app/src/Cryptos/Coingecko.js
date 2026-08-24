@@ -52,25 +52,34 @@ function Coingecko(){
                                     <th>Symbol</th>
                                     <th>Rank</th>
                                     <th>Price</th>
-                                    {/* market capitilization = shares * current price */}
+                                    {/* market capitalization = shares * current price */}
                                     <th>Market Cap Change</th>
                                     </tr>
                                 </thead>
                                 {coins.map(coin => {
                                     return(
-                                     <tbody>
+                                     <tbody key={coin.id}>
                                         <tr>
                                         <td>{coin.name}</td>
                                         <td>{coin.symbol}</td>
                                         <td>{coin.market_cap_rank}</td>
                                         <td>{coin.current_price}</td>
-                                        {coin.market_cap_change_percentage_24h > 0 ? (
+                                        {/* This prevents .toFixed() from ever being called on null. */}
+                                        {coin.market_cap_change_percentage_24h == null ? (
+                                            <td>
+                                                N/A
+                                            </td>
+                                        ) : coin.market_cap_change_percentage_24h > 0 ? (
                                             <td className="green">
                                                 {coin.market_cap_change_percentage_24h.toFixed(2)}% up
                                             </td>
-                                        ) : (
+                                        ) : coin.market_cap_change_percentage_24h < 0 ? (
                                             <td className="red">
                                                 {coin.market_cap_change_percentage_24h.toFixed(2)}% down
+                                            </td>
+                                        ) : (
+                                            <td>
+                                                0.00%
                                             </td>
                                         )}
                                         </tr>
