@@ -5,6 +5,7 @@ const cors = require("cors");
 const pool = require("./db");  // allows us to write queries in postgres
 const api_crypto = require('./routes/api/api_crypto');
 const axios = require("axios");
+const HOST = '127.0.0.1';
 
 
 require('dotenv').config();
@@ -156,9 +157,17 @@ app.delete("/deletecrypto/:id", async (req, res) => {
 })
 
 
-app.listen(PORT, () => {
-    console.log(`confirming server is running on port ${PORT}`);
-})
+
+
+// app.listen(PORT, () => {
+//     console.log(`confirming server is running on port ${PORT}`);
+// })
+//
+// using HOST = 127.0.0.1 so NGINX only can access it, and host is no longer unspecified, no longer listening on all interfaces.
+// Express explicitly says to accept connection only through this machine's localhost interface - 127.0.0.1
+app.listen(PORT, HOST, () => {
+    console.log(`confirming server is running at http://${HOST}:${PORT}`);
+});
 
 
 
